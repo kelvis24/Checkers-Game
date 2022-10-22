@@ -24,5 +24,4 @@ public abstract class Heuristic {
 	}
 	
 	public abstract int HeuristicValue(checkerGame game, JButton []cell, ImageIcon currentPlayer);
-	
 }

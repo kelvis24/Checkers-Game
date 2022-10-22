@@ -120,8 +120,6 @@ public class MinimaxCheckersAgent extends Agent{
         	  System.out.println(" " +m.col );
         }
         
-      
-      
         for(int row=0; row<8; row++){
             for(int col=0; col<8; col++){
                 if(cell[row*8 + col].getIcon() == null || cell[row*8 + col].getIcon() != game.board.currentPlayer) continue;

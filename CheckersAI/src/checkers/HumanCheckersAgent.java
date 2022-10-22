@@ -72,7 +72,6 @@ public class HumanCheckersAgent extends Agent{
                 if((row+col)%2 == 1) game.board.cell[row*8+col].setBackground(java.awt.Color.white);
             }    
         }
-        
         //System.out.println(name + "'s move complete.");
         return game.board.jumpByHumanAgent;
     }

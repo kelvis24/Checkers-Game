@@ -22,6 +22,7 @@ public class Main {
     public static void main(String[] args) throws InterruptedException {
         // TODO code application logic here
         String[] options = {"Human vs Computer", "Computer vs Computer"};
+        String[] option= {"Ok"};
         String[] response = {"OK"};
         String title = "Checkers";
 
@@ -29,6 +30,13 @@ public class Main {
             
             String[] depths = {"Select Depth Limit of AI Agent", "1", "2", "3", "4", "5", "6", "7", "8"};
             final JComboBox<String> combo = new JComboBox<>(depths);
+            
+            String[] Heuristic = {"Select Heuristic for AI Agent", "UseNumberOfPawnAndKingHeuristic", "UsePositionOnBoardHeuristic", "UsePawnsKingsMyPositionValHeuristic"};
+            final JComboBox<String> H = new JComboBox<>(Heuristic);
+            
+            int modes = JOptionPane.showOptionDialog(null, H, title,
+                    JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null,
+                    option, option[0]);
             
             int mode = JOptionPane.showOptionDialog(null, combo, title,
                     JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null,
@@ -43,7 +51,27 @@ public class Main {
                 System.out.println("depthLimit: " + depthLimitInteger);
             }
             
-            Heuristic h = new UsePawnsKingsMyPostionValHeuristic();
+            
+            Object d = H.getSelectedItem();
+            String heu = "";
+            if (d != null) {
+                 heu = ((String) d);
+                System.out.println(heu);
+            }
+            
+            Heuristic h = null;
+    
+            
+            if (heu.equals("UseNumberOfPawnAndKingHeuristic")) {
+            	h = new UseNumberOfPawnAndKingsHeuristic();
+            }
+            if (heu.equals("UsePositionOnBoardHeuristic")) {
+            	h = new UsePositionOnBoardHeuristic();
+            }
+            if (heu.equals("UsePawnsKingsMyPositionValHeuristic")) {
+            	h = new UsePawnsKingsMyPostionValHeuristic();
+            }
+            System.out.println(h);
 
             Agent Bob = new MinimaxCheckersAgent("Bob" + Integer.toString(depthLimitInteger), depthLimitInteger, h);
             Agent Alice;

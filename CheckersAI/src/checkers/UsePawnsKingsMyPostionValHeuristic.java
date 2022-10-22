@@ -6,7 +6,7 @@ import javax.swing.JButton;
 public class UsePawnsKingsMyPostionValHeuristic extends Heuristic{
 	
     final int MAX_WIN = 10000, MAX_LOSE = -10000;
-    
+     
     int []fr = {1, 1, -1, -1, 2, 2, -2, -2};
     int []fc = {1, -1, -1, 1, 2, -2, -2, 2};
     
@@ -94,4 +94,4 @@ public class UsePawnsKingsMyPostionValHeuristic extends Heuristic{
         if( myCheckers - opCheckers > 4) return heuristicVal + (myCheckers - opCheckers) * myAttackers;
         return heuristicVal;
     }
-}
+}	
